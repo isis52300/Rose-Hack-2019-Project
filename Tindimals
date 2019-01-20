@@ -6,7 +6,9 @@ var animalLocations = [];
 var currentIndex = 0;
 
 onEvent("doneButton1", "click", function() {
-  if (getText("prefdropdown") == "All") {
+  
+  
+  if (getText("prefdropdown") === "All") {
     appendItem(animalPictures, "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi");
     appendItem(animalPictures, "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Birman_01.jpg");
     appendItem(animalPictures, "https://img.huffingtonpost.com/asset/5b7fdeab1900001d035028dc.jpeg?cache=sixpwrbb1s&ops=1910_1000");
@@ -25,7 +27,8 @@ onEvent("doneButton1", "click", function() {
     appendItem(animalLocations, "1 Mile Away");
     updateScreenFwd();
   }
-  else if (getText("prefdropdown") == "Dogs") {
+  
+   if (getText("prefdropdown") == "Dogs") {
     appendItem(animalPictures, "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi");
     appendItem(animalPictures, "https://img.huffingtonpost.com/asset/5b7fdeab1900001d035028dc.jpeg?cache=sixpwrbb1s&ops=1910_1000");
     appendItem(animalNames, "Kona");
@@ -36,7 +39,19 @@ onEvent("doneButton1", "click", function() {
     appendItem(animalLocations, "6 Miles Away");
     updateScreenFwd();
   }
-  else if (getText("prefdropdown") == "Cats")
+  
+  appendItem(animalPictures, "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Birman_01.jpg");
+  appendItem(animalPictures, "https://i.pinimg.com/originals/81/6d/a5/816da533638aee63cfbd315ea24cccbd.jpg");
+  appendItem(animalNames, "Jade");
+  appendItem(animalNames, "Pumpkin");
+  appendItem(animalBreeds, "Siamese");
+  appendItem(animalBreeds, "American Longhair");
+  appendItem(animalLocations, "5 Miles Away");
+  appendItem(animalLocations, "1 Mile Away");
+  updateScreenFwd(); 
+
+
+if (getText("prefdropdown") == "Cats") {
     appendItem(animalPictures, "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Birman_01.jpg");
     appendItem(animalPictures, "https://i.pinimg.com/originals/81/6d/a5/816da533638aee63cfbd315ea24cccbd.jpg");
     appendItem(animalNames, "Jade");
@@ -45,7 +60,22 @@ onEvent("doneButton1", "click", function() {
     appendItem(animalBreeds, "American Longhair");
     appendItem(animalLocations, "5 Miles Away");
     appendItem(animalLocations, "1 Mile Away");
-    updateScreenFwd();
+    updateScreenFwd(); 
+ }
+ 
+ 
+  appendItem(animalPictures, "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi");
+  appendItem(animalPictures, "https://img.huffingtonpost.com/asset/5b7fdeab1900001d035028dc.jpeg?cache=sixpwrbb1s&ops=1910_1000");
+  appendItem(animalNames, "Kona");
+  appendItem(animalNames, "Eugene");
+  appendItem(animalBreeds, "Australian Sheperd");
+  appendItem(animalBreeds, "Golden Retriever");
+  appendItem(animalLocations, "2 Miles Away");
+  appendItem(animalLocations, "6 Miles Away");
+  updateScreenFwd();
+  
+
+  
 });
 
 buttonFunction("startButton", "name_screen");
@@ -54,6 +84,7 @@ buttonFunction("doneButton2", "instructions_screen");
 buttonFunction("doneInstruction", "animal_screen");
 buttonFunction("messengerButton", "messenger_screen");
 buttonFunction("backButton", "animal_screen");
+buttonFunction("messengerButtonFinish", "messengerfinal_screen");
 
 onEvent("noButton","click", function() {
   currentIndex = currentIndex + 1;
@@ -66,18 +97,26 @@ onEvent("yesButton", "click", function() {
   if (yes === 1) {
     setImageURL("messageImage1", animalPictures[currentIndex]);
     setText("messageName1", animalNames[currentIndex]);
+    setImageURL("messagefinalImage1", animalPictures[currentIndex]);
+    setText("messagefinalName1", animalNames[currentIndex]);
   }
-  else if (yes === 2) {
+  if (yes === 2) {
     setImageURL("messageImage2", animalPictures[currentIndex]);
     setText("messageName2", animalNames[currentIndex]);
+    setImageURL("messagefinalImage2", animalPictures[currentIndex]);
+    setText("messagefinalName2", animalNames[currentIndex]);
   }
-  else if (yes === 3) {
+  if (yes === 3) {
     setImageURL("messageImage3", animalPictures[currentIndex]);
     setText("messageName3", animalNames[currentIndex]);
+    setImageURL("messagefinalImage3", animalPictures[currentIndex]);
+    setText("messagefinalName3", animalNames[currentIndex]);
   }
-  else if (yes === 4) {
+  if (yes === 4) {
     setImageURL("messageImage4", animalPictures[currentIndex]);
     setText("messageName4", animalNames[currentIndex]);
+    setImageURL("messagefinalImage4", animalPictures[currentIndex]);
+    setText("messagefinalName4", animalNames[currentIndex]);
   }
   ++yes;
   currentIndex = currentIndex + 1;
@@ -91,6 +130,21 @@ function buttonFunction (buttonName, screenName) {
 }
 
 function updateScreenFwd() {
+  if (getText("prefdropdown") == "Dogs") {
+    if (currentIndex > 1) {
+      setScreen("finish_screen");
+    }
+  }
+  if (getText("prefdropdown") == "Cats") {
+    if (currentIndex > 1) {
+      setScreen("finish_screen");
+    }
+  }
+  if (getText("prefdropdown") == "All") {
+    if (currentIndex > 3) {
+      setScreen("finish_screen");
+    }
+  }
   setImageURL("animalPictures", animalPictures[currentIndex]);
   setText("nameDynamic", animalNames[currentIndex]);
   setText("breedDynamic", animalBreeds[currentIndex]);
