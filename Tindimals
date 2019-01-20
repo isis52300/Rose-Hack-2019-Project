@@ -7,7 +7,6 @@ var currentIndex = 0;
 
 onEvent("doneButton1", "click", function() {
   
-  
   if (getText("prefdropdown") === "All") {
     appendItem(animalPictures, "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi");
     appendItem(animalPictures, "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Birman_01.jpg");
@@ -39,7 +38,6 @@ onEvent("doneButton1", "click", function() {
     appendItem(animalLocations, "6 Miles Away");
     updateScreenFwd();
   }
-  
   appendItem(animalPictures, "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Birman_01.jpg");
   appendItem(animalPictures, "https://i.pinimg.com/originals/81/6d/a5/816da533638aee63cfbd315ea24cccbd.jpg");
   appendItem(animalNames, "Jade");
@@ -49,7 +47,6 @@ onEvent("doneButton1", "click", function() {
   appendItem(animalLocations, "5 Miles Away");
   appendItem(animalLocations, "1 Mile Away");
   updateScreenFwd(); 
-
 
 if (getText("prefdropdown") == "Cats") {
     appendItem(animalPictures, "https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/03/Birman_01.jpg");
@@ -62,8 +59,6 @@ if (getText("prefdropdown") == "Cats") {
     appendItem(animalLocations, "1 Mile Away");
     updateScreenFwd(); 
  }
- 
- 
   appendItem(animalPictures, "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi");
   appendItem(animalPictures, "https://img.huffingtonpost.com/asset/5b7fdeab1900001d035028dc.jpeg?cache=sixpwrbb1s&ops=1910_1000");
   appendItem(animalNames, "Kona");
@@ -73,9 +68,10 @@ if (getText("prefdropdown") == "Cats") {
   appendItem(animalLocations, "2 Miles Away");
   appendItem(animalLocations, "6 Miles Away");
   updateScreenFwd();
-  
+});
 
-  
+onEvent("nametext_input", "change", function() {
+    setText("nameoutputLabel", "Hi "+ getText("nametext_input") + "!" + " We will be sure to help you find a match to best suit your preferences.");
 });
 
 buttonFunction("startButton", "name_screen");
@@ -85,6 +81,7 @@ buttonFunction("doneInstruction", "animal_screen");
 buttonFunction("messengerButton", "messenger_screen");
 buttonFunction("backButton", "animal_screen");
 buttonFunction("messengerButtonFinish", "messengerfinal_screen");
+buttonFunction("messageBackButton", "messengerfinal_screen");
 
 onEvent("noButton","click", function() {
   currentIndex = currentIndex + 1;
@@ -121,6 +118,27 @@ onEvent("yesButton", "click", function() {
   ++yes;
   currentIndex = currentIndex + 1;
   updateScreenFwd();
+  
+  onEvent("messagefinalButton1","click", function() {
+    setScreen("chat_screen");
+    setText("namechatLabel", getText("messagefinalName1"));
+  });
+  onEvent("messagefinalButton2","click", function() {
+    setScreen("chat_screen");
+    setText("namechatLabel", getText("messagefinalName2"));
+  });
+  onEvent("messagefinalButton3","click", function() {
+    setScreen("chat_screen");
+    setText("namechatLabel", getText("messagefinalName3"));
+  });
+  onEvent("messagefinalButton4","click", function() {
+    setScreen("chat_screen");
+    setText("namechatLabel", getText("messagefinalName4"));
+  });
+});
+
+onEvent("sendButton","click", function() {
+  setText("sendLabel", getText("sendtext_input"));
 });
 
 function buttonFunction (buttonName, screenName) {
