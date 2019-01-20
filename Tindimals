@@ -1,7 +1,7 @@
 var animalPictures = [];
 var animalNames = [];
 var animalBreeds = [];
-//var animalInterests = [];
+var animalInterests = [];
 var animalLocations = [];
 var currentIndex = 0;
 
@@ -20,6 +20,10 @@ onEvent("doneButton1", "click", function() {
     appendItem(animalBreeds, "Siamese");
     appendItem(animalBreeds, "Golden Retriever");
     appendItem(animalBreeds, "American Longhair");
+    appendItem(animalInterests, "Bones, Chew Toys");
+    appendItem(animalInterests, "Tuna, Feathers");
+    appendItem(animalInterests, "Frisbees and Tennis Balls");
+    appendItem(animalInterests, "Catnip and Socks");
     appendItem(animalLocations, "2 Miles Away");
     appendItem(animalLocations, "5 Miles Away");
     appendItem(animalLocations, "6 Miles Away");
@@ -34,6 +38,8 @@ onEvent("doneButton1", "click", function() {
     appendItem(animalNames, "Eugene");
     appendItem(animalBreeds, "Australian Sheperd");
     appendItem(animalBreeds, "Golden Retriever");
+    appendItem(animalInterests, "Bones, Chew Toys");
+    appendItem(animalInterests, "Frisbees and Tennis Balls");
     appendItem(animalLocations, "2 Miles Away");
     appendItem(animalLocations, "6 Miles Away");
     updateScreenFwd();
@@ -44,6 +50,8 @@ onEvent("doneButton1", "click", function() {
   appendItem(animalNames, "Pumpkin");
   appendItem(animalBreeds, "Siamese");
   appendItem(animalBreeds, "American Longhair");
+  appendItem(animalInterests, "Tuna, Feathers");
+  appendItem(animalInterests, "Catnip and Socks");
   appendItem(animalLocations, "5 Miles Away");
   appendItem(animalLocations, "1 Mile Away");
   updateScreenFwd(); 
@@ -55,6 +63,8 @@ if (getText("prefdropdown") == "Cats") {
     appendItem(animalNames, "Pumpkin");
     appendItem(animalBreeds, "Siamese");
     appendItem(animalBreeds, "American Longhair");
+    appendItem(animalInterests, "Tuna, Feathers");
+    appendItem(animalInterests, "Catnip and Socks");
     appendItem(animalLocations, "5 Miles Away");
     appendItem(animalLocations, "1 Mile Away");
     updateScreenFwd(); 
@@ -65,6 +75,8 @@ if (getText("prefdropdown") == "Cats") {
   appendItem(animalNames, "Eugene");
   appendItem(animalBreeds, "Australian Sheperd");
   appendItem(animalBreeds, "Golden Retriever");
+  appendItem(animalInterests, "Bones, Chew Toys");
+  appendItem(animalInterests, "Frisbees and Tennis Balls");
   appendItem(animalLocations, "2 Miles Away");
   appendItem(animalLocations, "6 Miles Away");
   updateScreenFwd();
@@ -167,5 +179,6 @@ function updateScreenFwd() {
   setText("nameDynamic", animalNames[currentIndex]);
   setText("breedDynamic", animalBreeds[currentIndex]);
   setText("nameDynamic", animalNames[currentIndex]);
+  setText("interestDynamic", animalInterests[currentIndex] )
   setText("locationDynamic", animalLocations[currentIndex]);
 }
